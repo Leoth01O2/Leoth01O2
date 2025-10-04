@@ -1,0 +1,233 @@
+:root {
+    --brown: #7a4b2a;
+    --sand: #f7efe3;
+    --accent: #d9a96b;
+    --bg: #fffaf3;
+    --card-radius: 14px;
+}
+
+header a{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: #222;
+    line-height: 1.45;
+}
+
+/* NAV */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.brand-title {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: var(--brown);
+    letter-spacing: 0.6px;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 500px;
+    background-image: url('https://hnm.1cdn.vn/2022/05/01/hanoimoi.com.vn-uploads-images-phananh-2022-05-01-_mam2.jpg');
+    /* ảnh nền */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    /* lớp mờ để chữ nổi bật hơn */
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero .lead {
+    font-size: 1.2rem;
+    color: #f2f2f2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* INTRO */
+.intro {
+    margin-top: 1.2rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(180deg, rgba(250, 245, 240, 0.6), rgba(255, 255, 255, 0.4));
+    padding: 18px;
+    border-radius: 10px;
+}
+
+/* REGION / GRID */
+.region {
+    margin-top: 2.2rem;
+    margin-bottom: 2.2rem;
+}
+
+.region-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.region-header h3 {
+    margin: 0;
+    color: var(--brown);
+    font-family: 'Merriweather', serif;
+}
+
+.dish-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px;
+}
+
+@media(min-width:576px) {
+    .dish-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(min-width:900px) {
+    .dish-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.dish-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.dish-card:hover {
+  transform: scale(1.03);
+}
+
+.dish-card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.dish-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.dish-link:hover .dish-card {
+  transform: scale(1.03);
+  transition: transform 0.25s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dish-card img {
+    width: 100%;
+    height: 180px;
+    /* 👈 điều chỉnh chiều cao theo ý bro, 180–220px là đẹp */
+    object-fit: cover;
+    /* Cắt ảnh theo khung, không méo */
+    object-position: center;
+    /* Căn giữa vùng cắt */
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+
+.dish-card:hover img {
+    transform: scale(1.05);
+}
+
+/* phần overlay hiển thị khi hover */
+.dish-card .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Khi hover thì overlay hiện lên */
+.dish-card:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ẩn phần chữ ban đầu khi hover */
+.dish-card .card-body {
+    background: #fff;
+    padding: 12px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.dish-card:hover .card-body {
+    opacity: 0;
+}
+
+/* fade in on scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: all .6s cubic-bezier(.2, .9, .3, 1);
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CONTACT */
+.contact-card {
+    background: linear-gradient(180deg, #fff9f2, #fff);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(120, 100, 70, 0.06);
+}
+
+footer {
+    margin-top: 28px;
+    padding: 22px 0;
+    color: #6b5b4a;
+    text-align: center;
+    font-size: 0.92rem;
+}
